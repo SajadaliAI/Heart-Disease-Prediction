@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Heart Disease Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Heart Disease Prediction Form</h2>
+        <form action="/predict" method="post">
+            Age: <input type="number" name="Age" required><br>
+            
+            Sex:<select name="Sex" required>
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+            </select><br>
+            
+            Chest Pain Type:
+            <select name="ChestPainType" required>
+                <option value="ATA">ATA</option>
+                <option value="NAP">NAP</option>
+                <option value="TA">TA</option>
+            </select><br>
+            
+            Resting BP: <input type="number" name="RestingBP" required><br>
+            Cholesterol: <input type="number" name="Cholesterol" required><br>
+            Fasting Blood Sugar: <input type="number" name="FastingBS" required,><br>
+            Max Heart Rate: <input type="number" name="MaxHR" required><br>
+            Exercise Angina:
+            <select name="ExerciseAngina" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+            Oldpeak: <input type="number" step="0.1" name="Oldpeak" required><br>
+            
+            Resting ECG:
+            <select name="RestingECG" required>
+                <option value="Normal">Normal</option>
+                <option value="ST">ST</option>
+            </select><br>
+            
+            ST Slope:
+            <select name="ST_Slope" required>
+                <option value="Flat">Flat</option>
+                <option value="Up">Up</option>
+            </select><br><br>
+
+            <input type="submit" value="Predict">
+        </form>
+        {% if prediction_text %}
+        <h3>{{ prediction_text }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
